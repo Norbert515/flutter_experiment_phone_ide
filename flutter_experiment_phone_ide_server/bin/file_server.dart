@@ -15,14 +15,15 @@ class FileServer {
   List<IDEEntity> getAllFiles({String dir}) {
     List<FileSystemEntity> entries = Directory(dir?? srcDir).listSync();
 
+
     List<IDEEntity> result = [];
 
     for(FileSystemEntity entry in entries) {
       FileStat stat = entry.statSync();
       if(stat.type == FileSystemEntityType.directory) {
-        result.add(IDEEntity(name: path.basename(entry.path), files: getAllFiles(dir: entry.path), isFile: false));
+        result.add(IDEEntity(name: path.relative(entry.path, from: srcDir), files: getAllFiles(dir: entry.path), isFile: false));
       } else {
-        result.add(IDEEntity(name: path.basename(entry.path), files: [], isFile: true));
+        result.add(IDEEntity(name: path.relative(entry.path, from: srcDir), files: [], isFile: true));
       }
     }
     return result;

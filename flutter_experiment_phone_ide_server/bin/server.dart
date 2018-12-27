@@ -46,7 +46,7 @@ main(List<String> args) async {
   _apiServer.enableDiscoveryApi();
 
 
-  HttpServer server = await HttpServer.bind('localhost', 8080,);
+  HttpServer server = await HttpServer.bind(InternetAddress.anyIPv4, 8080,);
   print('Serving at http://${server.address.host}:${server.port}');
   server.listen(_apiServer.httpRequestHandler);
 

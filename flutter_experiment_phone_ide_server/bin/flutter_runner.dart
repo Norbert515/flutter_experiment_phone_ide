@@ -9,7 +9,7 @@ class FlutterRunner {
   Process _activeProcess;
 
   void coldStart() {
-    Process.start("F:\\flutter_test\\flutter\\bin\\flutter.bat", ["run", "-dDesktop"], workingDirectory: projectPath).then((process) {
+    Process.start("F:\\flutter_test\\flutter\\bin\\flutter.bat", ["run", "-d192.168.0.101:5555"], workingDirectory: projectPath).then((process) {
       _activeProcess = process;
        stdout.addStream(process.stdout);
        stderr.addStream(process.stderr);

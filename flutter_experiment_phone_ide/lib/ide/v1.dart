@@ -21,7 +21,7 @@ class TestApi {
   final commons.ApiRequester _requester;
 
   TestApi(http.Client client,
-      {core.String rootUrl: "http://localhost:8080/",
+      {core.String rootUrl: "http://192.168.0.179:8080/",
       core.String servicePath: "test/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
