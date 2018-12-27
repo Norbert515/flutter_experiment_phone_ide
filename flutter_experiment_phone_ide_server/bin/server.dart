@@ -47,7 +47,6 @@ main(List<String> args) async {
 
 
 
-  FileServer fileServer = FileServer(projectPath);
 
 
   HttpServer server = await HttpServer.bind('localhost', 8080,);

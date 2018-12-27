@@ -11,8 +11,6 @@ class FileServer {
   // Directory containing all the files
   final String srcDir;
 
-
-
   // Returns all files for this project
   List<IDEEntity> getAllFiles({String dir}) {
     List<FileSystemEntity> entries = Directory(dir?? srcDir).listSync();
@@ -28,17 +26,23 @@ class FileServer {
       }
     }
     return result;
-   // List<String> paths = entries.map((it) => path.relative(it.path, from: srcDir)).toList();
-   // return paths;
   }
 
   // Reads the file content
-  void openFile() {
-
+  String openFile(String relativePath) {
+    String filePath = path.join(srcDir, relativePath);
+    // Prevent reading outside project
+    if(!path.isWithin(srcDir, filePath)) return "";
+    File file = File(filePath);
+    return file.readAsStringSync();
   }
 
-  void replaceFile(String filePath, String content) {
-
+  void replaceFile(String relativePath, String content) {
+    String filePath = path.join(srcDir, relativePath);
+    // Prevent writing outside project
+    if(!path.isWithin(srcDir, filePath)) return;
+    File file = File(filePath);
+    file.writeAsStringSync(content, mode: FileMode.writeOnly);
   }
 
 
