@@ -13,7 +13,8 @@ ApiServer _apiServer = ApiServer(prettyPrint: true);
 main(List<String> args) async {
   var parser = ArgParser()
     ..addOption('port', abbr: 'p', defaultsTo: '8080')
-    ..addOption('projectPath', abbr: 'r');
+    ..addOption('projectPath', abbr: 'r')
+    ..addOption('deviceId', abbr: 'i');
 
   var result = parser.parse(args);
 
@@ -42,14 +43,37 @@ main(List<String> args) async {
     return;
   }
 
-  "192.168.0.101:5555";
-  _apiServer.addApi(API(projectPath));
+  String deviceId = result['deviceId'];
+  if(deviceId == null || deviceId.isEmpty) {
+    stdout.writeln('You need to provide an adb device id to run on');
+    exitCode = 64;
+    return;
+  }
+
+  _apiServer.addApi(API(projectPath, deviceId));
   _apiServer.enableDiscoveryApi();
 
 
   HttpServer server = await HttpServer.bind(InternetAddress.anyIPv4, 8080,);
-  print('Serving at http://${server.address.host}:${server.port}');
-  server.listen(_apiServer.httpRequestHandler);
+ // print('Serving at http://${server.address.host}:${server.port}');
+
+
+  // Get the ip to run on
+  ProcessResult processResult = await Process.run('ipconfig', []);
+  final String ipconfigResult = processResult.stdout;
+  final String ip = ipconfigResult.split("\n")
+      .map((it) => it.replaceAll(" ", ""))
+      .where((it) => it.startsWith("IPv4"))
+      .where((it) => !it.contains("192.168.")).first;
+  String actualIp = ip.split("....:")[1];
+  // Last character is something werid
+  actualIp = actualIp.substring(0, actualIp.length - 1);
+
+  print('Open "http://${actualIp}:${server.port}/test/v1/coldStart" on your device to open the app');
+  server.listen((it) {
+    print("Got request ${it.uri}");
+    _apiServer.httpRequestHandler(it);
+  });
 
  /* var handler = const shelf.Pipeline()
       .addMiddleware(shelf.logRequests())
