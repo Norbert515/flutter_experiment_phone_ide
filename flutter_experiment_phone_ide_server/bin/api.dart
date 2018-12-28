@@ -8,9 +8,9 @@ import 'package:path/path.dart' as path;
 @ApiClass(version: 'v1', name: "test")
 class API {
 
-  API(this.projectDir):
+  API(this.projectDir, String deviceId):
     fileServer = FileServer(path.join(projectDir, "lib")),
-    flutterRunner = FlutterRunner(projectDir);
+    flutterRunner = FlutterRunner(projectDir, deviceId);
 
   final FileServer fileServer;
 

@@ -2,10 +2,18 @@ import 'dart:math' show min;
 import 'dart:collection';
 
 void main() {
-  final data = "import 'dart:math';\n"
-      "void main() {\n"
-      "  print('this is \${math.pi} for math pi');\n"
-      "}\n";
+  final data = "class MyApp extends StatelessWidget {" +
+  "@override"
+  "Widget build(BuildContext context) {" +
+    "return new MaterialApp(" +
+      "title: 'Flutter Demo',"+
+      "theme: new ThemeData(" +
+        "primarySwatch: Colors.red," +
+      "),"
+      "home: IdeApp(child: new MyHomePage())," +
+    ");" +
+  "}"+
+"}";
   final lexer = DartLexer(StringReader(data));
   while (true) {
     final type = lexer.advance();
