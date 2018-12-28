@@ -4,6 +4,8 @@
 
 Has only been tested on Windows + Android (other platforms should work with little code adjustments)
 
+The PC and the device must be in the same private network.
+
 No root, what so ever required.
 
 *Estimated set up time: 8 minutes*
@@ -71,3 +73,7 @@ The link is:
 ```
 <server_local_ip>:<port>/test/v1/coldStart
 ```
+
+#### 10. VPN (Not tested) 
+if you want to develop apps anywhere you go, you will have to set up a VPN to connect the phone and the PC.
+
