@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_experiment_phone_ide/ide/v1.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
+import 'package:quill_delta/quill_delta.dart';
+import 'package:zefyr/zefyr.dart';
 
 TestApi testApi = TestApi(http.Client());
 
@@ -24,9 +26,15 @@ class _IdeAppState extends State<IdeApp> {
 
   bool keyboardShowing = false;
 
+
   @override
   void initState() {
     super.initState();
+
+    controller.addListener(() {
+     // controller.value.selection
+    });
+
   }
 
   void onFileSelected(String fileName) async {
