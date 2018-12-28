@@ -1,82 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7207a76-9253-418c-9bdd-98f71620f572" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/flutter_experiment_phone_ide2.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/.metadata" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/android/app/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/android/app/src/main/AndroidManifest.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/android/app/src/main/java/com/yourcompany/flutterexperimentphoneide/MainActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/android/app/src/main/res/drawable/launch_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/android/app/src/main/res/values/styles.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/android/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/android/gradle.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/android/gradle/wrapper/gradle-wrapper.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/android/settings.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Flutter/AppFrameworkInfo.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Flutter/Debug.xcconfig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Flutter/Release.xcconfig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner.xcodeproj/project.pbxproj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner.xcworkspace/contents.xcworkspacedata" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/AppDelegate.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/AppDelegate.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Base.lproj/LaunchScreen.storyboard" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Base.lproj/Main.storyboard" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/Info.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/ios/Runner/main.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/lib/ide.dart" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/lib/lol/yo.dart" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/lib/main.dart" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/pubspec.yaml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide/test/widget_test.dart" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/.idea/libraries/Dart_Packages.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/.idea/libraries/Dart_SDK.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/CHANGELOG.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/analysis_options.yaml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/bin/api.dart" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/bin/file_server.dart" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/bin/flutter_runner.dart" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/bin/models.dart" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/bin/server.dart" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/flutter_experiment_phone_ide_server.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/pubspec.yaml" />
+    <list default="true" id="f7207a76-9253-418c-9bdd-98f71620f572" name="Default" comment="Added model classes">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/flutter_experiment_phone_ide_server/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -86,6 +13,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -93,6 +23,9 @@
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState />
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-11" />
@@ -158,14 +91,147 @@
               <option name="myItemId" value="flutter_experiment_phone_ide" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flutter_experiment_phone_ide" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flutter_experiment_phone_ide" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flutter_experiment_phone_ide" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/flutter_experiment_phone_ide_server" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/flutter_experiment_phone_ide/lib/main.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/flutter_experiment_phone_ide_server/bin/api.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/flutter_experiment_phone_ide_server/bin/file_server.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/flutter_experiment_phone_ide_server/bin/flutter_runner.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/flutter_experiment_phone_ide_server/bin/server.dart</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/flutter_experiment_phone_ide_server/flutter_experiment_phone_ide_server.iml</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -185,6 +251,61 @@
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -210,6 +331,43 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="CabalRunConfiguration" factoryName="Haskell">
+      <module name="" />
+      <setting name="executableName" value="" />
+      <setting name="parameters" value="" />
+      <setting name="workingDir" value="" />
+      <environmetVariables />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <method />
+    </configuration>
+    <configuration default="true" type="FlutterTestConfigType" factoryName="Flutter Test">
+      <option name="testFile" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -229,6 +387,52 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="flutter_experiment_phone_ide2" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -279,6 +483,28 @@
       <option name="presentableId" value="Default" />
       <updated>1545932300389</updated>
     </task>
+    <task id="LOCAL-00001" summary="Inital commit">
+      <created>1545932436184</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1545932436184</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added model classes">
+      <created>1545938224238</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1545938224238</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added model classes">
+      <created>1545938398758</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1545938398758</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -286,8 +512,8 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936978" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936978" sideWeight="0.50216216" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Flutter Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -302,7 +528,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936978" sideWeight="0.49783784" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="GhcMod" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24972972" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -320,8 +546,31 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Inital commit" />
+    <MESSAGE value="Added model classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added model classes" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/flutter_experiment_phone_ide/test/v1.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="186" column="21" lean-forward="true" selection-start-line="186" selection-start-column="21" selection-end-line="186" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutter_experiment_phone_ide/model/v1.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3825">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
