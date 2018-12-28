@@ -33,15 +33,32 @@ Add these three dependencies into your pubspec.yaml and run `packages get`
   path: ^1.6.2
 ```
 
-#### 5. Navigate to the server
+#### 6. Wrap the app
+Wrap your home page with the `IdeApp` widget:
+```
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: 'Flutter Demo',
+      theme: new ThemeData(
+        primarySwatch: Colors.red,
+      ),
+      home: IdeApp(child: new MyHomePage()),
+    );
+  }
+}
+```
+
+#### 7. Navigate to the server
 ```
 flutter_experiment_phone_ide/flutter_experiment_phone_ide_server/bin/
 ```
 
-#### 6. Open the command line here (or navigate to this place)
+#### 8. Open the command line here (or navigate to this place)
 
 
-#### 7. Get the deviceId of the device you want to run it on
+#### 9. Get the deviceId of the device you want to run it on
 
 Emulator/ Desktop embedder/ connected phone :
 Run 
@@ -57,7 +74,7 @@ to get a list of possible targets.
 Wireless phones :
 It still goes through adb, but wirelessly. Here is a very quick set up for that https://futurestud.io/tutorials/how-to-debug-your-android-app-over-wifi-without-root
 
-#### 8. Start the server
+#### 10. Start the server
 It takes 2 arguments
 ```
 --projectPath=<path_to_the_project_you_want_to_develop_on_your_phone>
@@ -68,12 +85,12 @@ This is how it could look like:
 dart server.dart --projectPath="C:\Users\Norbert\workspace\flutter_experiment_phone_ide\flutter_experiment_phone_ide" --deviceId="172.23.218.234:5555"
 ```
 
-#### 9. Open the link which the server prints out to the console on your phone.
+#### 11. Open the link which the server prints out to the console on your phone.
 The link is: 
 ```
 <server_local_ip>:<port>/test/v1/coldStart
 ```
 
-#### 10. VPN (Not tested) 
+#### 12. VPN (Not tested) 
 if you want to develop apps anywhere you go, you will have to set up a VPN to connect the phone and the PC.
 
