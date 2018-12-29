@@ -25,7 +25,7 @@ git clone https://github.com/Norbert515/flutter_experiment_phone_ide.git
 #### 4. Include the code into your Flutter project
 Copy the "ide" folder under "https://github.com/Norbert515/flutter_experiment_phone_ide/tree/master/flutter_experiment_phone_ide/lib" into your project
 
-#### 5. Add dependecies
+#### 5. Add dependecies to your project
 Add these three dependencies into your pubspec.yaml and run `packages get`
 ```
   rpc: ^0.6.0
@@ -50,13 +50,16 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-#### 7. Navigate to the server
+
+#### 7. Open the command line at this place
 ```
 flutter_experiment_phone_ide/flutter_experiment_phone_ide_server/bin/
 ```
 
-#### 8. Open the command line here (or navigate to this place)
-
+#### 8. Get the packages
+```
+pub get
+```
 
 #### 9. Get the deviceId of the device you want to run it on
 
@@ -84,13 +87,20 @@ This is how it could look like:
 ```
 dart server.dart --projectPath="C:\Users\Norbert\workspace\flutter_experiment_phone_ide\flutter_experiment_phone_ide" --deviceId="172.23.218.234:5555"
 ```
+#### 11. Change to IP inside the client
+Navigate to the folder "ide" you copied to your project. Open the `ide.dart` file.
+On line 8, change the `rootUrl` to the server IP.
+Here is an example:
+```
+TestApi testApi = TestApi(http.Client(), rootUrl: "http://192.168.0.179:8080/");
+```
 
-#### 11. Open the link which the server prints out to the console on your phone.
+#### 12. Open the link which the server prints out to the console on your phone.
 The link is: 
 ```
 <server_local_ip>:<port>/test/v1/coldStart
 ```
 
-#### 12. VPN (Not tested) 
+#### 13. VPN (Not tested) 
 if you want to develop apps anywhere you go, you will have to set up a VPN to connect the phone and the PC.
 

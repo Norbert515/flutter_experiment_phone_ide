@@ -5,7 +5,7 @@ import 'package:path/path.dart' as path;
 import 'package:quill_delta/quill_delta.dart';
 import 'package:zefyr/zefyr.dart';
 
-TestApi testApi = TestApi(http.Client());
+TestApi testApi = TestApi(http.Client(), rootUrl: "http://192.168.0.179:8080/");
 
 const Color foreground = Color(0xffA9B7C6);
 const Color background = Color(0xff2B2B2B);
@@ -141,7 +141,7 @@ class _IdeAppState extends State<IdeApp> {
                         style: TextStyle(color: foreground),
                         decoration: InputDecoration(contentPadding: EdgeInsets.all(16)),
                         controller: controller,
-                        maxLines: TextField.noMaxLength,
+                        maxLines: 9007199254740992,
                       )),
                 )
               : SizedBox(),

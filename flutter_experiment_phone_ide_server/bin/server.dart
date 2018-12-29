@@ -54,22 +54,27 @@ main(List<String> args) async {
   _apiServer.enableDiscoveryApi();
 
 
-  HttpServer server = await HttpServer.bind(InternetAddress.anyIPv4, 8080,);
+  HttpServer server = await HttpServer.bind(InternetAddress.anyIPv4, 8080);
  // print('Serving at http://${server.address.host}:${server.port}');
 
 
   // Get the ip to run on
   ProcessResult processResult = await Process.run('ipconfig', []);
   final String ipconfigResult = processResult.stdout;
-  final String ip = ipconfigResult.split("\n")
+  final List<String> ips = ipconfigResult.split("\n")
       .map((it) => it.replaceAll(" ", ""))
-      .where((it) => it.startsWith("IPv4"))
-      .where((it) => !it.contains("192.168.")).first;
-  String actualIp = ip.split("....:")[1];
-  // Last character is something werid
-  actualIp = actualIp.substring(0, actualIp.length - 1);
+      .where((it) => it.startsWith("IPv4")).toList();
 
-  print('Open "http://${actualIp}:${server.port}/test/v1/coldStart" on your device to open the app');
+  print('Open "http://<serverIp>:<port>/test/v1/coldStart" on your devices browser to open the app \n');
+  print('Following possible ips were found (by running ipconfig), select the one which corresponds to your local network');
+  for(String ip in ips) {
+    String actualIp = ip.split("....:")[1];
+    // Last character is something weird
+    actualIp = actualIp.substring(0, actualIp.length - 1);
+
+    print('Open "http://${actualIp}:${server.port}/test/v1/coldStart" on your device to open the app');
+  }
+  
   server.listen((it) {
     print("Got request ${it.uri}");
     _apiServer.httpRequestHandler(it);
