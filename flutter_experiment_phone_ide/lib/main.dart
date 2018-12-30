@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Flutter Demo',
       theme: new ThemeData(
-        primarySwatch: Colors.yellow,
-      ),
+        primarySwatch: Colors.red,
+     ),
       home: IdeApp(child: new MyHomePage()),
     );
   }
@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Icon(Icons.add),
             onPressed: () {
               setState(() {
-                count++;
+                count--;
               });
             }
          ));
