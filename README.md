@@ -102,5 +102,9 @@ The link is:
 ```
 
 #### 13. VPN (Not tested) 
-if you want to develop apps anywhere you go, you will have to set up a VPN to connect the phone and the PC.
+If you want to develop apps anywhere you go, you will have to set up a VPN to connect the phone and the PC.
 
+#### 14. Edit the code
+When the App opens, swipe to the right (there is a hidden drawer to the 
+left) to open the IDE settings. There you can enable the IDE and select a file
+to edit.
