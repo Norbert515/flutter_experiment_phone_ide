@@ -63,19 +63,18 @@ pub get
 
 #### 9. Get the deviceId of the device you want to run it on
 
-Emulator/ Desktop embedder/ connected phone :
-Run 
+If you want to test it on your phone without a cable :
+It still goes through adb, but wirelessly. Here is a very quick set up for that https://futurestud.io/tutorials/how-to-debug-your-android-app-over-wifi-without-root
+
+Then run
+
 ```
 flutter devices
 ```
-or 
-```
-adb devices
-```
+![device-ids](https://github.com/Norbert515/flutter_experiment_phone_ide/blob/master/device-ids.png)
 to get a list of possible targets.
+The device ids are 192.168.0.101:5555, Desktop, Small respectively. 
 
-Wireless phones :
-It still goes through adb, but wirelessly. Here is a very quick set up for that https://futurestud.io/tutorials/how-to-debug-your-android-app-over-wifi-without-root
 
 #### 10. Start the server
 It takes 2 arguments
