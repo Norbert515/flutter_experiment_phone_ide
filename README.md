@@ -72,7 +72,7 @@ Then run
 flutter devices
 ```
 ![device-ids](https://github.com/Norbert515/flutter_experiment_phone_ide/blob/master/device-ids.png)
-to get a list of possible targets.
+
 The device ids are 192.168.0.101:5555, Desktop, Small respectively. 
 
 
