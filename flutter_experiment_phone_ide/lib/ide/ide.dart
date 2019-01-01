@@ -26,15 +26,29 @@ class _IdeAppState extends State<IdeApp> {
 
   bool keyboardShowing = false;
 
+  bool possibilityToLiveReload = false;
+
+  LiveReloadTextManipulator liveReloadTextManipulator;
 
   @override
   void initState() {
     super.initState();
 
     controller.addListener(() {
-     // controller.value.selection
-    });
+      TextSelection selection = controller.selection;
+      if(selection.baseOffset != selection.extentOffset) {
+        setState(() {
+          possibilityToLiveReload = true;
+        });
+      } else {
+        if(possibilityToLiveReload) {
+          setState(() {
+            possibilityToLiveReload = false;
+          });
+        }
+      }
 
+    });
   }
 
   void onFileSelected(String fileName) async {
@@ -45,6 +59,13 @@ class _IdeAppState extends State<IdeApp> {
       currentPath = fileName;
       controller.text = message.value;
     });
+  }
+
+
+  void initLiveReload() {
+    TextSelection textSelection = controller.selection;
+    String text = controller.text;
+    liveReloadTextManipulator = LiveReloadTextManipulator(text, textSelection);
   }
 
   @override
@@ -137,11 +158,24 @@ class _IdeAppState extends State<IdeApp> {
               ? Expanded(
                   child: Material(
                       color: background,
-                      child: TextField(
-                        style: TextStyle(color: foreground),
-                        decoration: InputDecoration(contentPadding: EdgeInsets.all(16)),
-                        controller: controller,
-                        maxLines: 9007199254740992,
+                      child: Column(
+                        children: <Widget>[
+                          possibilityToLiveReload? Row(
+                            children: <Widget>[
+                              Spacer(),
+                              FlatButton(
+                                onPressed: initLiveReload,
+                                child: Text("Live-Reload"),
+                              ),
+                            ],
+                          ): SizedBox(),
+                          TextField(
+                            style: TextStyle(color: foreground),
+                            decoration: InputDecoration(contentPadding: EdgeInsets.all(16)),
+                            controller: controller,
+                            maxLines: 9007199254740992,
+                          ),
+                        ],
                       )),
                 )
               : SizedBox(),
@@ -205,4 +239,34 @@ class FileEntryWidget extends StatelessWidget {
       );
     }
   }
+}
+
+
+mixin ControllerMixin<T extends StatefulWidget> on State<T> {
+
+  ValueNotifier valueNotifier = ValueNotifier(0);
+
+}
+
+class _InheritedController<T> extends InheritedWidget {
+
+  _InheritedController(this.data);
+
+  final T data;
+
+  @override
+  bool updateShouldNotify(_InheritedController oldWidget) => oldWidget.data != data;
+
+}
+
+class LiveReloadTextManipulator {
+
+  LiveReloadTextManipulator(this.originalText, this.textSelection);
+
+
+  final String originalText;
+  final TextSelection textSelection;
+
+
+
 }
