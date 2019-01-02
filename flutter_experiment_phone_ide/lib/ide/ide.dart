@@ -4,8 +4,9 @@ import 'package:flutter_experiment_phone_ide/ide/file_system.dart';
 import 'package:flutter_experiment_phone_ide/ide/live-reload-controllers.dart';
 import 'package:flutter_experiment_phone_ide/ide/v1.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter/scheduler.dart';
 
-TestApi testApi = TestApi(http.Client(), rootUrl: "http://192.168.0.178:8080/");
+TestApi testApi = TestApi(http.Client(), rootUrl: "http://192.168.0.179:8080/");
 
 const Color foreground = Color(0xffA9B7C6);
 const Color background = Color(0xff2B2B2B);
@@ -235,6 +236,8 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
 
   LiveReloadTextManipulator liveReloadTextManipulator;
 
+  ReloadType selectedReloadType;
+
   @override
   void initState() {
     super.initState();
@@ -246,6 +249,7 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
     await liveReloadTextManipulator.init(reloadType);
 
     setState(() {
+      selectedReloadType = reloadType;
       liveReloadState = LiveReloadState.READY;
     });
   }
@@ -259,7 +263,7 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
 
   void onApply() async {
     // TODO to string wont work on everything
-    await liveReloadTextManipulator.applyCode($DEFAULT_CONTROLLER$.toString());
+    await liveReloadTextManipulator.applyCode(getController(selectedReloadType).toString());
     widget.onDone();
 
   }
@@ -278,26 +282,50 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
         child = _buildReady();
         break;
     }
-    return SizedBox(
-      height: 52,
-      child: child,
+    return Column(
+      children: <Widget>[
+        Container(
+          height: 10.0,
+          width: 200,
+          child: Text("${$DEFAULT_DOUBLE_CONTROLLER$.value} adasd", style: TextStyle(color: Colors.white),),
+        ),
+        SizedBox(
+          height: 52,
+          child: child,
+        ),
+      ],
     );
+  }
+
+  /// Change is dynamic on purpose
+  void changeValue(change) {
+    setController(change, selectedReloadType);
+    liveReloadTextManipulator.applyVisualCode(change.toString());
+  //  SchedulerBinding.instance.ensureVisualUpdate();
+    WidgetsBinding.instance.performReassemble();
+
   }
 
   /// This is being edited by the code gen
-  /// Change is dynamic on purpose
-  void changeValue(change) {
-    $DEFAULT_CONTROLLER$ = change;
-     liveReloadTextManipulator.applyVisualCode(change.toString());
-     WidgetsBinding.instance.performReassemble();
-
-  }
   Widget _getLiveController() {
-    // TODO codegen must replace this name
-    return LiveColorController(
-      value: $DEFAULT_CONTROLLER$,
-      onChanged: changeValue,
-    );
+    switch(selectedReloadType) {
+      case ReloadType.DOUBLE:
+        return LiveSliderController(
+          value: $DEFAULT_DOUBLE_CONTROLLER$.value,
+          onChanged: changeValue,
+        );
+      case ReloadType.COLOR:
+        return LiveColorController(
+          value: $DEFAULT_COLOR_CONTROLLER$.value,
+          onChanged: changeValue,
+        );
+      case ReloadType.MATERIAL_COLOR:
+        return LiveMaterialColorController(
+          value: $DEFAULT_MATERIAL_COLOR_CONTROLLER$.value,
+          onChanged: changeValue,
+        );
+    }
+
   }
   /// This is being edited by the code gen
 
@@ -326,6 +354,10 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
       children: <Widget>[
         Spacer(),
         FlatButton(
+          onPressed: () => initLiveReload(ReloadType.MATERIAL_COLOR),
+          child: Text("Live-Reload-Material-Color", style: TextStyle(color: Colors.white),),
+        ),
+        FlatButton(
           onPressed: () => initLiveReload(ReloadType.COLOR),
           child: Text("Live-Reload-Color", style: TextStyle(color: Colors.white),),
         ),
@@ -342,6 +374,7 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
 enum ReloadType {
   DOUBLE,
   COLOR,
+  MATERIAL_COLOR
 }
 
 // Double
@@ -369,7 +402,19 @@ class LiveReloadTextManipulator {
 
   Future init(ReloadType reloadType) async {
 
-    placeHolder ='\$DEFAULT_CONTROLLER\$';
+
+    switch(reloadType) {
+      case ReloadType.DOUBLE:
+        placeHolder ='\$DEFAULT_DOUBLE_CONTROLLER\$.value';
+        break;
+      case ReloadType.COLOR:
+        placeHolder ='\$DEFAULT_COLOR_CONTROLLER\$.value';
+        break;
+      case ReloadType.MATERIAL_COLOR:
+        placeHolder ='\$DEFAULT_MATERIAL_COLOR_CONTROLLER\$.value';
+        break;
+    }
+
 
     // Add actual controller
     String doubleValue = originalText.substring(textSelection.baseOffset, textSelection.extentOffset);
@@ -381,7 +426,7 @@ class LiveReloadTextManipulator {
     String withReplacement = originalText.replaceRange(textSelection.baseOffset, textSelection.extentOffset, placeHolder);
 
 
-    //$DEFAULT_CONTROLLER$ = double.tryParse(originalValue);
+  //  $DEFAULT_CONTROLLER$ = ControllableDouble(double.tryParse(originalValue));
 
     // Add import to controllers in target file
     // This only works if the import is not present yet

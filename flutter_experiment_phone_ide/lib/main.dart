@@ -15,18 +15,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Flutter Demo',
       theme: new ThemeData(
-        primarySwatch:     MaterialColor(0xff00ffff, {
-          50: Color(0xff00ffff),
-          100: Color(0xff00ffff),
-          200: Color(0xff00ffff),
-          300: Color(0xff00ffff),
-          400: Color(0xff00ffff),
-          500: Color(0xff00ffff),
-          600: Color(0xff00ffff),
-          700: Color(0xff00ffff),
-          800: Color(0xff00ffff),
-          900: Color(0xff00ffff),
-        }),
+        primarySwatch: MaterialColor(4281758452, { 50: Color(0xff3672f4),100: Color(0xff3672f4),200: Color(0xff3672f4),300: Color(0xff3672f4),400: Color(0xff3672f4),500: Color(0xff3672f4),600: Color(0xff3672f4),700: Color(0xff3672f4),800: Color(0xff3672f4),900: Color(0xff3672f4),}),
       ),
       home: IdeApp(child: new MyHomePage()),
     );
@@ -50,15 +39,28 @@ class _MyHomePageState extends State<MyHomePage> {
           title: new Text('Flutter Demo Home Page'),
         ),
         body: new Center(
-          child: Container(
-            child: Material(
-              child: Text('pressed $count times, here is a random number: ${28.0}', style: TextStyle(fontSize: 23.0),),
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Material(
+                child: Text('pressed $count times, here is a random number: ${28.0}', style: TextStyle(fontSize: 38.0),),
+              ),
+              Container(
+                width: 83.0,
+                height: 50,
+                color: Theme.of(context).primaryColor,
+              ),
+            ]..addAll(Iterable.generate(5.0.round()).map((it) => Container(
+              margin: EdgeInsets.all(4),
+              height: 13.0,
+              width: 44.0,
+              color: Theme.of(context).primaryColor,
+            )).toList()),
           ),
         ),
         floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add),
-            backgroundColor: $DEFAULT_CONTROLLER$,
+            backgroundColor: Color(0xff2b5f33),
             onPressed: () {
               setState(() {
                 count++;
