@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_experiment_phone_ide/ide/controllers.dart';
 import 'package:flutter_experiment_phone_ide/ide/v1.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
 import 'package:quill_delta/quill_delta.dart';
 import 'package:zefyr/zefyr.dart';
 
-TestApi testApi = TestApi(http.Client(), rootUrl: "http://192.168.0.178:8080/");
+TestApi testApi = TestApi(http.Client(), rootUrl: "http://192.168.0.179:8080/");
 
 const Color foreground = Color(0xffA9B7C6);
 const Color background = Color(0xff2B2B2B);
+
+
 
 class IdeApp extends StatefulWidget {
   const IdeApp({Key key, this.child}) : super(key: key);
@@ -29,6 +32,7 @@ class _IdeAppState extends State<IdeApp> {
   bool possibilityToLiveReload = false;
 
   LiveReloadTextManipulator liveReloadTextManipulator;
+
 
   @override
   void initState() {
@@ -62,10 +66,23 @@ class _IdeAppState extends State<IdeApp> {
   }
 
 
-  void initLiveReload() {
+
+  Future initLiveReload() async {
     TextSelection textSelection = controller.selection;
     String text = controller.text;
     liveReloadTextManipulator = LiveReloadTextManipulator(text, textSelection);
+    liveReloadTextManipulator.addCode();
+    await testApi.writeFile(WriteFileRequest()
+      ..path = currentPath
+      ..newContent = liveReloadTextManipulator.editedCode
+    );
+
+  }
+
+
+  void liveReload() {
+    $DEFAULT_DOUBLE_CONTROLLER$ = 3.0;
+    WidgetsBinding.instance.performReassemble();
   }
 
   @override
@@ -160,20 +177,18 @@ class _IdeAppState extends State<IdeApp> {
                       color: background,
                       child: Column(
                         children: <Widget>[
-                          possibilityToLiveReload? Row(
-                            children: <Widget>[
-                              Spacer(),
-                              FlatButton(
-                                onPressed: initLiveReload,
-                                child: Text("Live-Reload"),
-                              ),
-                            ],
+                          possibilityToLiveReload? LiveReloadBar(
+                            initReload: initLiveReload,
                           ): SizedBox(),
-                          TextField(
-                            style: TextStyle(color: foreground),
-                            decoration: InputDecoration(contentPadding: EdgeInsets.all(16)),
-                            controller: controller,
-                            maxLines: 9007199254740992,
+                          possibilityToLiveReload? Divider(): SizedBox(),
+                          Expanded(
+                            child: TextField(
+                              autofocus: true,
+                              style: TextStyle(color: foreground),
+                              decoration: InputDecoration(contentPadding: EdgeInsets.all(16)),
+                              controller: controller,
+                              maxLines: 9007199254740992,
+                            ),
                           ),
                         ],
                       )),
@@ -241,23 +256,87 @@ class FileEntryWidget extends StatelessWidget {
   }
 }
 
+typedef FutureResolver = Future Function();
 
-mixin ControllerMixin<T extends StatefulWidget> on State<T> {
-
-  ValueNotifier valueNotifier = ValueNotifier(0);
-
+enum LiveReloadState {
+  POSSIBLE,
+  WAITING,
+  READY,
 }
+class LiveReloadBar extends StatefulWidget {
 
-class _InheritedController<T> extends InheritedWidget {
+  const LiveReloadBar({Key key, this.initReload, this.liveReloadWithValue}) : super(key: key);
 
-  _InheritedController(this.data);
+  final FutureResolver initReload;
 
-  final T data;
+  //TODO make colors work too
+  final ValueChanged<double> liveReloadWithValue;
 
   @override
-  bool updateShouldNotify(_InheritedController oldWidget) => oldWidget.data != data;
+  _LiveReloadBarState createState() => _LiveReloadBarState();
+}
+
+class _LiveReloadBarState extends State<LiveReloadBar> {
+
+  LiveReloadState liveReloadState;
+
+  LiveReloadTextManipulator liveReloadTextManipulator;
+
+
+  Future initLiveReload() async {
+    await widget.initReload();
+    setState(() {
+      liveReloadState = LiveReloadState.READY;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Widget child;
+    switch(liveReloadState) {
+      case LiveReloadState.POSSIBLE:
+        child = _buildPossible();
+        break;
+      case LiveReloadState.WAITING:
+        child = _buildWaiting();
+        break;
+      case LiveReloadState.READY:
+        child = _buildReady();
+        break;
+    }
+    return SizedBox(
+      height: 72,
+      child: child,
+    );
+  }
+
+
+  Widget _buildReady() {
+    return Center(
+      child: Slider(value: 5, onChanged: widget.liveReloadWithValue),
+    );
+  }
+
+  Widget _buildWaiting() {
+    return Center(child: CircularProgressIndicator(),);
+  }
+  Widget _buildPossible() {
+    return Row(
+      children: <Widget>[
+        Spacer(),
+        FlatButton(
+          onPressed: initLiveReload,
+          child: Text("Live-Reload", style: TextStyle(color: Colors.white),),
+        ),
+      ],
+    );
+  }
+
+
 
 }
+
+
 
 class LiveReloadTextManipulator {
 
@@ -266,6 +345,14 @@ class LiveReloadTextManipulator {
 
   final String originalText;
   final TextSelection textSelection;
+
+  String editedCode;
+
+  void addCode() {}
+
+  String revertCodeWithValue(String value) {
+
+  }
 
 
 

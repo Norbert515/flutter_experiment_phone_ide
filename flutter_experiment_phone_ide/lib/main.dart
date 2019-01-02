@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/foundation.dart' show debugDefaultTargetPlatformOverride;
+import 'package:flutter_experiment_phone_ide/ide/controllers.dart';
 import 'package:flutter_experiment_phone_ide/ide/ide.dart';
 
 void main() {
@@ -16,7 +17,6 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.green,
       ),
-      // TODO put IdeApp into custom runApp
       home: IdeApp(child: new MyHomePage()),
     );
   }
@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: new Center(
           child: Container(
             child: Material(
-              child: Text('pressed $count times'),
+              child: Text('pressed $count times', style: TextStyle(fontSize: $DEFAULT_DOUBLE_CONTROLLER$),),
             ),
           ),
         ),
