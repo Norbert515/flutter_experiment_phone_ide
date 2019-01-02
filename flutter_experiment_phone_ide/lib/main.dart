@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: new Center(
           child: Container(
             child: Material(
-              child: Text('pressed $count times', style: TextStyle(fontSize: $DEFAULT_DOUBLE_CONTROLLER$),),
+              child: Text('pressed $count times, here is a random number: ${7.0}', style: TextStyle(fontSize: 30.0),),
             ),
           ),
         ),

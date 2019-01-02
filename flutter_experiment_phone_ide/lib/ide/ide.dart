@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_experiment_phone_ide/ide/controllers.dart';
+import 'package:flutter_experiment_phone_ide/ide/file_system.dart';
 import 'package:flutter_experiment_phone_ide/ide/v1.dart';
 import 'package:http/http.dart' as http;
-import 'package:path/path.dart' as path;
-import 'package:quill_delta/quill_delta.dart';
-import 'package:zefyr/zefyr.dart';
 
 TestApi testApi = TestApi(http.Client(), rootUrl: "http://192.168.0.179:8080/");
 
@@ -31,8 +29,9 @@ class _IdeAppState extends State<IdeApp> {
 
   bool possibilityToLiveReload = false;
 
-  LiveReloadTextManipulator liveReloadTextManipulator;
+  bool isLiveReloading = false;
 
+  ListOfIDEEntity loadedFiles;
 
   @override
   void initState() {
@@ -45,7 +44,7 @@ class _IdeAppState extends State<IdeApp> {
           possibilityToLiveReload = true;
         });
       } else {
-        if(possibilityToLiveReload) {
+        if(possibilityToLiveReload && !isLiveReloading) {
           setState(() {
             possibilityToLiveReload = false;
           });
@@ -66,24 +65,19 @@ class _IdeAppState extends State<IdeApp> {
   }
 
 
-
-  Future initLiveReload() async {
-    TextSelection textSelection = controller.selection;
-    String text = controller.text;
-    liveReloadTextManipulator = LiveReloadTextManipulator(text, textSelection);
-    liveReloadTextManipulator.addCode();
-    await testApi.writeFile(WriteFileRequest()
-      ..path = currentPath
-      ..newContent = liveReloadTextManipulator.editedCode
-    );
-
+  void onDoneLiveLoading() {
+    setState(() {
+      isLiveReloading = false;
+      possibilityToLiveReload = false;
+    });
   }
 
-
-  void liveReload() {
-    $DEFAULT_DOUBLE_CONTROLLER$ = 3.0;
-    WidgetsBinding.instance.performReassemble();
+  void onStartLiveLoading() {
+    setState(() {
+      isLiveReloading = true;
+    });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -114,16 +108,19 @@ class _IdeAppState extends State<IdeApp> {
                 ),
                 Expanded(
                   child: FutureBuilder<ListOfIDEEntity>(
-                    future: testApi.getResource(),
+                    future: loadedFiles == null? testApi.getResource(): Future.value(loadedFiles),
+                    initialData: loadedFiles?? ListOfIDEEntity(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData)
                         return Center(
                           child: CircularProgressIndicator(),
                         );
                       ListOfIDEEntity data = snapshot.requireData;
+                      loadedFiles = data;
                       return ListView(
                         children: data
                             .map((it) => FileEntryWidget(
+                                  textColor: foreground,
                                   ideEntity: it,
                                   onFileSelected: onFileSelected,
                                   selectedFile: currentPath,
@@ -178,7 +175,12 @@ class _IdeAppState extends State<IdeApp> {
                       child: Column(
                         children: <Widget>[
                           possibilityToLiveReload? LiveReloadBar(
-                            initReload: initLiveReload,
+                            liveReloadTextManipulator: LiveReloadTextManipulator(
+                              filePath: currentPath,
+                              textEditingController: controller,
+                            ),
+                            onDone: onDoneLiveLoading,
+                            onStart: onStartLiveLoading,
                           ): SizedBox(),
                           possibilityToLiveReload? Divider(): SizedBox(),
                           Expanded(
@@ -200,63 +202,9 @@ class _IdeAppState extends State<IdeApp> {
   }
 }
 
-typedef OnFileSelected = Function(String name);
 
-class FileEntryWidget extends StatelessWidget {
-  const FileEntryWidget({Key key, this.ideEntity, this.onFileSelected, this.selectedFile}) : super(key: key);
 
-  final IDEEntity ideEntity;
 
-  final OnFileSelected onFileSelected;
-
-  final String selectedFile;
-
-  @override
-  Widget build(BuildContext context) {
-    if (ideEntity.isFile) {
-      return InkWell(
-        onTap: () {
-          onFileSelected(ideEntity.name);
-        },
-        child: Container(
-          color: selectedFile == ideEntity.name ? Color(0xff2b62cd) : Colors.transparent,
-          padding: EdgeInsets.all(8),
-          height: 30,
-          child: SizedBox.expand(
-              child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    path.basename(ideEntity.name),
-                    style: TextStyle(color: foreground),
-                  ))),
-        ),
-      );
-    } else {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(8),
-            height: 50.0,
-            child:
-                SizedBox.expand(child: Align(alignment: Alignment.centerLeft, child: Text(path.basename(ideEntity.name), style: TextStyle(color: foreground)))),
-          ),
-        ]..addAll(ideEntity.files
-            .map((it) => Padding(
-                  padding: EdgeInsets.only(left: 24.0),
-                  child: FileEntryWidget(
-                    ideEntity: it,
-                    onFileSelected: onFileSelected,
-                    selectedFile: selectedFile,
-                  ),
-                ))
-            .toList()),
-      );
-    }
-  }
-}
-
-typedef FutureResolver = Future Function();
 
 enum LiveReloadState {
   POSSIBLE,
@@ -265,12 +213,15 @@ enum LiveReloadState {
 }
 class LiveReloadBar extends StatefulWidget {
 
-  const LiveReloadBar({Key key, this.initReload, this.liveReloadWithValue}) : super(key: key);
+  const LiveReloadBar({Key key, this.onDone, this.onStart, this.liveReloadTextManipulator}) : super(key: key);
 
-  final FutureResolver initReload;
 
-  //TODO make colors work too
-  final ValueChanged<double> liveReloadWithValue;
+
+  final VoidCallback onDone;
+
+  final VoidCallback onStart;
+
+  final LiveReloadTextManipulator liveReloadTextManipulator;
 
   @override
   _LiveReloadBarState createState() => _LiveReloadBarState();
@@ -278,16 +229,44 @@ class LiveReloadBar extends StatefulWidget {
 
 class _LiveReloadBarState extends State<LiveReloadBar> {
 
-  LiveReloadState liveReloadState;
+  LiveReloadState liveReloadState = LiveReloadState.POSSIBLE;
+
 
   LiveReloadTextManipulator liveReloadTextManipulator;
 
+  @override
+  void initState() {
+    super.initState();
+    liveReloadTextManipulator = widget.liveReloadTextManipulator;
+  }
 
   Future initLiveReload() async {
-    await widget.initReload();
+    widget.onStart();
+    await liveReloadTextManipulator.init();
+
     setState(() {
       liveReloadState = LiveReloadState.READY;
     });
+  }
+
+  void sliderChange(double change) {
+    $DEFAULT_DOUBLE_CONTROLLER$ = change;
+    liveReloadTextManipulator.applyVisualCode(change.toString());
+    WidgetsBinding.instance.performReassemble();
+  }
+
+
+
+  void onCancel() async {
+    await liveReloadTextManipulator.cancelChanges();
+    widget.onDone();
+
+  }
+
+  void onApply() async {
+    await liveReloadTextManipulator.applyCode($DEFAULT_DOUBLE_CONTROLLER$.toString());
+    widget.onDone();
+
   }
 
   @override
@@ -305,15 +284,31 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
         break;
     }
     return SizedBox(
-      height: 72,
+      height: 52,
       child: child,
     );
   }
 
 
   Widget _buildReady() {
-    return Center(
-      child: Slider(value: 5, onChanged: widget.liveReloadWithValue),
+    return Row(
+      children: <Widget>[
+        FlatButton(
+          onPressed: onCancel,
+          child: Text("Cancle", style: TextStyle(color: Colors.white)),
+        ),
+        Expanded(child: Slider(
+          value: $DEFAULT_DOUBLE_CONTROLLER$,
+          onChanged: sliderChange,
+          min: 1,
+          max: 41,
+          divisions: 40,
+        )),
+        FlatButton(
+          onPressed: onApply,
+          child: Text("Apply", style: TextStyle(color: Colors.white)),
+        ),
+      ],
     );
   }
 
@@ -331,29 +326,85 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
       ],
     );
   }
-
-
-
 }
 
 
-
+// Double
 class LiveReloadTextManipulator {
 
-  LiveReloadTextManipulator(this.originalText, this.textSelection);
+  LiveReloadTextManipulator({this.textEditingController, this.filePath}): originalText = textEditingController.text;
 
+  final TextEditingController textEditingController;
+
+  final String filePath;
 
   final String originalText;
-  final TextSelection textSelection;
+  TextSelection get textSelection => textEditingController.selection;
 
   String editedCode;
+  String placeHolder;
 
-  void addCode() {}
+  String originalValue;
 
-  String revertCodeWithValue(String value) {
+  Future init() async {
 
+    placeHolder ='\$DEFAULT_DOUBLE_CONTROLLER\$';
+
+    // Add actual controller
+    String doubleValue = originalText.substring(textSelection.baseOffset, textSelection.extentOffset);
+    String controllerCode = 'double $placeHolder = $doubleValue;';
+
+
+    originalValue = originalText.substring(textSelection.baseOffset, textSelection.extentOffset);
+    String withReplacement = originalText.replaceRange(textSelection.baseOffset, textSelection.extentOffset, placeHolder);
+
+    // Add import to controllers in target file
+    // This only works if the import is not present yet
+    String withImport = 'import "stuff"\n $withReplacement;';
+
+
+    editedCode = withReplacement;
+    pushChanged();
   }
 
 
 
+  String applyVisualCode(String value) {
+    String applied = editedCode.replaceRange(textSelection.baseOffset, textSelection.baseOffset + placeHolder.length, value);
+    updateCode(applied);
+    return applied;
+  }
+
+
+  Future applyCode(String value) async {
+    editedCode = applyVisualCode(value);
+    await pushChanged();
+  }
+
+  Future cancelChanges() async {
+    String revertedCode = editedCode.replaceRange(textSelection.baseOffset, textSelection.baseOffset + placeHolder.length, originalValue);
+    editedCode = revertedCode;
+    updateCode(editedCode);
+    await pushChanged();
+  }
+
+
+  void updateCode(String newText) {
+    textEditingController.value = textEditingController.value.copyWith(text: newText,
+        selection: TextSelection.collapsed(offset: textEditingController.selection.baseOffset),
+        composing: TextRange.empty);
+  }
+
+
+  Future pushChanged() async {
+    await testApi.writeFile(WriteFileRequest()
+      ..path = filePath
+      ..newContent = editedCode
+    );
+    await testApi.hotReload();
+  }
+
+
 }
+
+
