@@ -15,7 +15,18 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Flutter Demo',
       theme: new ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch:     MaterialColor(0xff00ffff, {
+          50: Color(0xff00ffff),
+          100: Color(0xff00ffff),
+          200: Color(0xff00ffff),
+          300: Color(0xff00ffff),
+          400: Color(0xff00ffff),
+          500: Color(0xff00ffff),
+          600: Color(0xff00ffff),
+          700: Color(0xff00ffff),
+          800: Color(0xff00ffff),
+          900: Color(0xff00ffff),
+        }),
       ),
       home: IdeApp(child: new MyHomePage()),
     );
@@ -41,12 +52,13 @@ class _MyHomePageState extends State<MyHomePage> {
         body: new Center(
           child: Container(
             child: Material(
-              child: Text('pressed $count times, here is a random number: ${7.0}', style: TextStyle(fontSize: 30.0),),
+              child: Text('pressed $count times, here is a random number: ${28.0}', style: TextStyle(fontSize: 23.0),),
             ),
           ),
         ),
         floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add),
+            backgroundColor: $DEFAULT_CONTROLLER$,
             onPressed: () {
               setState(() {
                 count++;

@@ -5,7 +5,7 @@ import 'package:flutter_experiment_phone_ide/ide/live-reload-controllers.dart';
 import 'package:flutter_experiment_phone_ide/ide/v1.dart';
 import 'package:http/http.dart' as http;
 
-TestApi testApi = TestApi(http.Client(), rootUrl: "http://192.168.0.179:8080/");
+TestApi testApi = TestApi(http.Client(), rootUrl: "http://192.168.0.178:8080/");
 
 const Color foreground = Color(0xffA9B7C6);
 const Color background = Color(0xff2B2B2B);
@@ -294,7 +294,7 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
   }
   Widget _getLiveController() {
     // TODO codegen must replace this name
-    return LiveSliderController(
+    return LiveColorController(
       value: $DEFAULT_CONTROLLER$,
       onChanged: changeValue,
     );
@@ -347,14 +347,20 @@ enum ReloadType {
 // Double
 class LiveReloadTextManipulator {
 
-  LiveReloadTextManipulator({this.textEditingController, this.filePath}): originalText = textEditingController.text;
+  LiveReloadTextManipulator({this.textEditingController, this.filePath}):
+        originalText = textEditingController.text;
 
   final TextEditingController textEditingController;
 
   final String filePath;
 
   final String originalText;
+
   TextSelection get textSelection => textEditingController.selection;
+
+
+  TextSelection savedTextSelection;
+
 
   String editedCode;
   String placeHolder;
@@ -370,16 +376,18 @@ class LiveReloadTextManipulator {
     String controllerCode = 'double $placeHolder = $doubleValue;';
 
 
-    $DEFAULT_CONTROLLER$ = double.tryParse(originalValue);
-
-
     originalValue = originalText.substring(textSelection.baseOffset, textSelection.extentOffset);
+
     String withReplacement = originalText.replaceRange(textSelection.baseOffset, textSelection.extentOffset, placeHolder);
+
+
+    //$DEFAULT_CONTROLLER$ = double.tryParse(originalValue);
 
     // Add import to controllers in target file
     // This only works if the import is not present yet
     String withImport = 'import "stuff"\n $withReplacement;';
 
+    savedTextSelection = textSelection;
 
     editedCode = withReplacement;
     pushChanged();
@@ -388,7 +396,7 @@ class LiveReloadTextManipulator {
 
 
   String applyVisualCode(String value) {
-    String applied = editedCode.replaceRange(textSelection.baseOffset, textSelection.baseOffset + placeHolder.length, value);
+    String applied = editedCode.replaceRange(savedTextSelection.baseOffset, savedTextSelection.baseOffset + placeHolder.length, value);
     updateCode(applied);
     return applied;
   }
@@ -400,7 +408,7 @@ class LiveReloadTextManipulator {
   }
 
   Future cancelChanges() async {
-    String revertedCode = editedCode.replaceRange(textSelection.baseOffset, textSelection.baseOffset + placeHolder.length, originalValue);
+    String revertedCode = editedCode.replaceRange(savedTextSelection.baseOffset, savedTextSelection.baseOffset + placeHolder.length, originalValue);
     editedCode = revertedCode;
     updateCode(editedCode);
     await pushChanged();

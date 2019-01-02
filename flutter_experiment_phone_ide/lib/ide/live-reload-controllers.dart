@@ -1,8 +1,28 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:flutter_colorpicker/material_picker.dart';
+
+
+abstract class ControllableValue<T> {
+  T value;
+  String toString();
+}
+
+class ControllableDouble extends ControllableValue<double>{
+
+}
+
+class ControllableColor extends ControllableValue<Color> {
+
+  String toString() {
+    return value.toString();
+  }
+}
+
+class ControllableMaterialColor extends ControllableValue<MaterialColor> {
+
+}
+
 class LiveSliderController extends StatelessWidget {
   
   const LiveSliderController({Key key, this.value, this.onChanged}) : super(key: key);
@@ -41,7 +61,6 @@ class LiveColorControllerState extends State<LiveColorController> {
   @override
   void initState() {
     super.initState();
-    openColorPicker();
   }
 
 
@@ -56,7 +75,6 @@ class LiveColorControllerState extends State<LiveColorController> {
               pickerColor: widget.value,
               onColorChanged: widget.onChanged,
               enableLabel: true,
-              pickerAreaHeightPercent: 0.8,
             ),
             // Use Material color picker
             // child: MaterialPicker(
