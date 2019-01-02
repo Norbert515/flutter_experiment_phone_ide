@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_experiment_phone_ide/ide/controllers.dart';
 import 'package:flutter_experiment_phone_ide/ide/file_system.dart';
+import 'package:flutter_experiment_phone_ide/ide/live-reload-controllers.dart';
 import 'package:flutter_experiment_phone_ide/ide/v1.dart';
 import 'package:http/http.dart' as http;
 
@@ -240,21 +241,14 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
     liveReloadTextManipulator = widget.liveReloadTextManipulator;
   }
 
-  Future initLiveReload() async {
+  Future initLiveReload(ReloadType reloadType) async {
     widget.onStart();
-    await liveReloadTextManipulator.init();
+    await liveReloadTextManipulator.init(reloadType);
 
     setState(() {
       liveReloadState = LiveReloadState.READY;
     });
   }
-
-  void sliderChange(double change) {
-    $DEFAULT_DOUBLE_CONTROLLER$ = change;
-    liveReloadTextManipulator.applyVisualCode(change.toString());
-    WidgetsBinding.instance.performReassemble();
-  }
-
 
 
   void onCancel() async {
@@ -264,7 +258,8 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
   }
 
   void onApply() async {
-    await liveReloadTextManipulator.applyCode($DEFAULT_DOUBLE_CONTROLLER$.toString());
+    // TODO to string wont work on everything
+    await liveReloadTextManipulator.applyCode($DEFAULT_CONTROLLER$.toString());
     widget.onDone();
 
   }
@@ -289,6 +284,23 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
     );
   }
 
+  /// This is being edited by the code gen
+  /// Change is dynamic on purpose
+  void changeValue(change) {
+    $DEFAULT_CONTROLLER$ = change;
+     liveReloadTextManipulator.applyVisualCode(change.toString());
+     WidgetsBinding.instance.performReassemble();
+
+  }
+  Widget _getLiveController() {
+    // TODO codegen must replace this name
+    return LiveSliderController(
+      value: $DEFAULT_CONTROLLER$,
+      onChanged: changeValue,
+    );
+  }
+  /// This is being edited by the code gen
+
 
   Widget _buildReady() {
     return Row(
@@ -297,13 +309,7 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
           onPressed: onCancel,
           child: Text("Cancle", style: TextStyle(color: Colors.white)),
         ),
-        Expanded(child: Slider(
-          value: $DEFAULT_DOUBLE_CONTROLLER$,
-          onChanged: sliderChange,
-          min: 1,
-          max: 41,
-          divisions: 40,
-        )),
+        Expanded(child: _getLiveController()),
         FlatButton(
           onPressed: onApply,
           child: Text("Apply", style: TextStyle(color: Colors.white)),
@@ -320,14 +326,23 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
       children: <Widget>[
         Spacer(),
         FlatButton(
-          onPressed: initLiveReload,
-          child: Text("Live-Reload", style: TextStyle(color: Colors.white),),
+          onPressed: () => initLiveReload(ReloadType.COLOR),
+          child: Text("Live-Reload-Color", style: TextStyle(color: Colors.white),),
+        ),
+        FlatButton(
+          onPressed: () => initLiveReload(ReloadType.DOUBLE),
+          child: Text("Live-Reload-Double", style: TextStyle(color: Colors.white),),
         ),
       ],
     );
   }
 }
 
+
+enum ReloadType {
+  DOUBLE,
+  COLOR,
+}
 
 // Double
 class LiveReloadTextManipulator {
@@ -346,13 +361,16 @@ class LiveReloadTextManipulator {
 
   String originalValue;
 
-  Future init() async {
+  Future init(ReloadType reloadType) async {
 
-    placeHolder ='\$DEFAULT_DOUBLE_CONTROLLER\$';
+    placeHolder ='\$DEFAULT_CONTROLLER\$';
 
     // Add actual controller
     String doubleValue = originalText.substring(textSelection.baseOffset, textSelection.extentOffset);
     String controllerCode = 'double $placeHolder = $doubleValue;';
+
+
+    $DEFAULT_CONTROLLER$ = double.tryParse(originalValue);
 
 
     originalValue = originalText.substring(textSelection.baseOffset, textSelection.extentOffset);
