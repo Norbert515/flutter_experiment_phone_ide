@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Flutter Demo',
       theme: new ThemeData(
-        primarySwatch: MaterialColor(4281758452, { 50: Color(0xff3672f4),100: Color(0xff3672f4),200: Color(0xff3672f4),300: Color(0xff3672f4),400: Color(0xff3672f4),500: Color(0xff3672f4),600: Color(0xff3672f4),700: Color(0xff3672f4),800: Color(0xff3672f4),900: Color(0xff3672f4),}),
+        primarySwatch: MaterialColor(4294194742, { 50: Color(0xfff43636),100: Color(0xfff43636),200: Color(0xfff43636),300: Color(0xfff43636),400: Color(0xfff43636),500: Color(0xfff43636),600: Color(0xfff43636),700: Color(0xfff43636),800: Color(0xfff43636),900: Color(0xfff43636),}),
       ),
       home: IdeApp(child: new MyHomePage()),
     );
@@ -42,15 +42,16 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Text("${$DEFAULT_STRING_CONTROLLER$.value}"),
               Material(
-                child: Text('pressed $count times, here is a random number: ${28.0}', style: TextStyle(fontSize: 38.0),),
+                child: Text('pressed $count times, here is a random number: ${13.0}', style: TextStyle(fontSize: 25.0),),
               ),
               Container(
                 width: 83.0,
                 height: 50,
                 color: Theme.of(context).primaryColor,
               ),
-            ]..addAll(Iterable.generate(5.0.round()).map((it) => Container(
+            ]..addAll(Iterable.generate(6.0.round()).map((it) => Container(
               margin: EdgeInsets.all(4),
               height: 13.0,
               width: 44.0,
@@ -60,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add),
-            backgroundColor: Color(0xff2b5f33),
+            backgroundColor: Color(0xff00efff),
             onPressed: () {
               setState(() {
                 count++;

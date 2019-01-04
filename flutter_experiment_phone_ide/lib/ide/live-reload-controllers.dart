@@ -4,6 +4,18 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_colorpicker/material_picker.dart';
 
 
+enum ReloadType {
+  DOUBLE,
+  COLOR,
+  MATERIAL_COLOR,
+  STRING,
+}
+
+
+
+
+
+
 abstract class ControllableValue<T> {
   ControllableValue(this.value);
 
@@ -13,7 +25,17 @@ abstract class ControllableValue<T> {
   String toString() => toCode();
 }
 
-class ControllableDouble extends ControllableValue<double>{
+
+class ControllableString extends ControllableValue<String>{
+  ControllableString(String value) : super(value);
+
+  @override
+  String toCode() {
+    return value.toString();
+  }
+
+
+}class ControllableDouble extends ControllableValue<double>{
   ControllableDouble(double value) : super(value);
 
   @override
@@ -83,6 +105,45 @@ abstract class StatefulLiveControllerWidget<T extends ControllableValue> extends
   const StatefulLiveControllerWidget({Key key, this.onChanged}): super(key: key);
 
   final ValueChanged<T> onChanged;
+}
+
+
+class LiveStringController extends StatefulLiveControllerWidget<ControllableString>{
+
+  const LiveStringController({Key key, this.value, ValueChanged<ControllableString> onChanged}) : super(key: key, onChanged: onChanged);
+
+  final String value;
+
+  @override
+  LiveStringControllerState createState() {
+    return new LiveStringControllerState();
+  }
+}
+
+class LiveStringControllerState extends State<LiveStringController> {
+
+
+  TextEditingController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController();
+    controller.addListener(() {
+      widget.onChanged(ControllableString(controller.text));
+    });
+
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      style: TextStyle(color: Colors.white),
+    );
+  }
+
+
 }
 
 class LiveSliderController extends StatelessLiveControllerWidget<ControllableDouble> {

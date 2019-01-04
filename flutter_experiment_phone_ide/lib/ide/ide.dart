@@ -306,28 +306,9 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
 
   }
 
-  /// This is being edited by the code gen
   Widget _getLiveController() {
-    switch(selectedReloadType) {
-      case ReloadType.DOUBLE:
-        return LiveSliderController(
-          value: $DEFAULT_DOUBLE_CONTROLLER$.value,
-          onChanged: changeValue,
-        );
-      case ReloadType.COLOR:
-        return LiveColorController(
-          value: $DEFAULT_COLOR_CONTROLLER$.value,
-          onChanged: changeValue,
-        );
-      case ReloadType.MATERIAL_COLOR:
-        return LiveMaterialColorController(
-          value: $DEFAULT_MATERIAL_COLOR_CONTROLLER$.value,
-          onChanged: changeValue,
-        );
-    }
-
+    return getControllerWidget(selectedReloadType, changeValue);
   }
-  /// This is being edited by the code gen
 
 
   Widget _buildReady() {
@@ -354,6 +335,10 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
       children: <Widget>[
         Spacer(),
         FlatButton(
+          onPressed: () => initLiveReload(ReloadType.STRING),
+          child: Text("Live-Reload-String", style: TextStyle(color: Colors.white),),
+        ),
+        FlatButton(
           onPressed: () => initLiveReload(ReloadType.MATERIAL_COLOR),
           child: Text("Live-Reload-Material-Color", style: TextStyle(color: Colors.white),),
         ),
@@ -371,11 +356,6 @@ class _LiveReloadBarState extends State<LiveReloadBar> {
 }
 
 
-enum ReloadType {
-  DOUBLE,
-  COLOR,
-  MATERIAL_COLOR
-}
 
 // Double
 class LiveReloadTextManipulator {
@@ -403,18 +383,7 @@ class LiveReloadTextManipulator {
   Future init(ReloadType reloadType) async {
 
 
-    switch(reloadType) {
-      case ReloadType.DOUBLE:
-        placeHolder ='\$DEFAULT_DOUBLE_CONTROLLER\$.value';
-        break;
-      case ReloadType.COLOR:
-        placeHolder ='\$DEFAULT_COLOR_CONTROLLER\$.value';
-        break;
-      case ReloadType.MATERIAL_COLOR:
-        placeHolder ='\$DEFAULT_MATERIAL_COLOR_CONTROLLER\$.value';
-        break;
-    }
-
+    placeHolder = getControllerCode(reloadType);
 
     // Add actual controller
     String doubleValue = originalText.substring(textSelection.baseOffset, textSelection.extentOffset);
