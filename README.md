@@ -1,6 +1,6 @@
 # flutter_experiment_phone_ide
 
-[phone_ide](https://github.com/Norbert515/flutter_experiment_phone_ide/blob/master/phone.gif)
+![phone_ide](https://github.com/Norbert515/flutter_experiment_phone_ide/blob/master/phone.gif)
 ## Set up
 
 Has only been tested on Windows + Android (other platforms should work with little code adjustments)
