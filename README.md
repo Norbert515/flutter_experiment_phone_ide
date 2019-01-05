@@ -3,6 +3,8 @@
 ![phone_ide](https://github.com/Norbert515/flutter_experiment_phone_ide/blob/master/phone.gif)
 ![live_reloads](https://github.com/Norbert515/flutter_experiment_phone_ide/blob/master/gifs/material_color_cut_gif.gif)
 
+More gifs in the "gifs" folder.
+
 ## Set up
 
 Has only been tested on Windows + Android (other platforms should work with little code adjustments)
